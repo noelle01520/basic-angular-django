@@ -1,4 +1,3 @@
-(function(){
   'use strict';
 
   angular
@@ -20,7 +19,7 @@
   * Controllers
   */
   angular
-    .module('app.controllers', []);
+    .module('app.controllers', ['ngCookies']);
 
   /*
   * Directives
@@ -57,4 +56,3 @@
     $http.defaults.xsrfCookieName = 'csrftoken';
     $http.defaults.withCredentials = true;
   }
-})();

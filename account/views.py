@@ -42,6 +42,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         }, status=status.HTTP_400_BAD_REQUEST)
 
 
+
 class IndexView(TemplateView):
     template_name = 'index.html'
 
@@ -59,7 +60,6 @@ class LoginView(views.APIView):
         password = data.get('password', None)
 
         account = authenticate(email=email, password=password)
-        print('account={0}'.format(account))
         if account:
             if account.is_active:
                 login(request, account)

@@ -1,4 +1,4 @@
-(function(){
+
   angular
     .module('app.config')
     .config(config);
@@ -8,4 +8,3 @@
   function config($locationProvider){
     $locationProvider.html5Mode(true);
   }
-})();

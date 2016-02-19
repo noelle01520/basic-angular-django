@@ -1,7 +1,6 @@
 /**
 * Alert
 **/
-(function(){
   'use strict';
 
   angular
@@ -52,4 +51,3 @@
       $rootScope.$broadcast('setAlert');
     }
   }
-})();

@@ -1,4 +1,4 @@
-(function(){
+
   'use strict';
 
   angular
@@ -40,4 +40,3 @@
       })
       .otherwise('/');
   }
-})();

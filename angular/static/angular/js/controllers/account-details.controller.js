@@ -1,21 +1,20 @@
 /**
-* AccountDetailsController
-* @namespace app.controllers
+* DetailsController
+* @namespace app.controllers.account
 **/
-(function(){
   'use strict';
 
   angular
     .module('app.controllers')
     .controller('AccountDetailsController', AccountDetailsController);
 
-  AccountDetailsController.$inject = ['$location', '$routeParams', 'Account'], 'Alert';
+  AccountDetailsController.$inject = ['$location', '$scope', '$routeParams', 'Account', 'Alert'];
 
-  function AccountDetailsController($location, $routeParams, Account, Alert){
+  function AccountDetailsController($location, $scope, $routeParams, Account, Alert){
     var vm = this;
 
     vm.account = undefined;
-
+    vm.get = get;
     activate();
 
     /**
@@ -27,6 +26,16 @@
 
       var username = $routeParams.username.substr(1);
 
+      vm.get(username);
+
+    }
+
+    /**
+    * @name get
+    * @desc Get the account details
+    * @memberOf app.controllers.AccountDetailsControllers
+    **/
+    function get(username){
       Account.get(username).then(accountSuccessFn, accountErrorFn);
 
       /**
@@ -46,4 +55,3 @@
       }
     }
   }
-})();

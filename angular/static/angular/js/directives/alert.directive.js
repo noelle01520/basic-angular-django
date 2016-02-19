@@ -2,7 +2,6 @@
 * Alert
 * @namespace app.directives
 **/
-(function(){
   'use strict';
 
   angular
@@ -24,4 +23,3 @@
 
     return directive;
   }
-})();

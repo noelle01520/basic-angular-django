@@ -2,7 +2,6 @@
 * AlertController
 * @namespace app.controllers
 **/
-(function(){
   'use strict';
 
   angular
@@ -45,4 +44,3 @@
       }
     }
   }
-})();

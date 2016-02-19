@@ -2,7 +2,6 @@
 * LayoutController
 * @namespace app.controllers
 **/
-(function(){
   'use strict';
 
   angular
@@ -48,4 +47,3 @@
       Account.logout();
     }
   }
-})();

@@ -3,7 +3,6 @@
 * @namespace app.services
 * @desc Provide objects for interacting with django Account api
 **/
-(function(){
   'use strict';
 
   angular
@@ -210,4 +209,3 @@
       return $http.put('/account/api/v1/accounts/' + account.username + '/', account);
     }
   }
-})();

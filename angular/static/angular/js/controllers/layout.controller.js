@@ -33,7 +33,7 @@
     * @memberOf app.controllers.LayoutController
     **/
     function index(){
-      delete $cookies.appMessage;
+      $cookies.remove('appMessage');
       Alert.setAlert('','');
       Navigation.goHome(false);
     }

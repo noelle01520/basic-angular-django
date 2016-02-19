@@ -51,7 +51,7 @@ describe('AccountDetailsController', function(){
   }));
 
 
-    it('should expose a to retrieve account details', function(){
+    it('should expose a initialize method to retrieve account details', function(){
       expect(AccountDetailsController.get).toBeDefined();
       expect(angular.isFunction(AccountDetailsController.get)).toBe(true);
     });

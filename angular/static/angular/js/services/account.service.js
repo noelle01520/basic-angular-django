@@ -100,10 +100,10 @@
     * @memberOf app.services.Account
     **/
     function getAuthenticatedAccount(){
-      if(!$cookies.authenticatedAccount){
+      if(!$cookies.get('authenticatedAccount')){
         return
       }
-      return JSON.parse($cookies.authenticatedAccount);
+      return JSON.parse($cookies.get('authenticatedAccount'));
     }
 
     /**
@@ -113,7 +113,7 @@
     * @memberOf app.services.Account
     **/
     function isAuthenticated(){
-      return !!$cookies.authenticatedAccount;
+      return !!$cookies.get('authenticatedAccount');
     }
 
     /**
@@ -186,7 +186,7 @@
     * @memeberOf app.services.Account
     **/
     function setAuthenticatedAccount(account){
-      $cookies.authenticatedAccount = JSON.stringify(account);
+      $cookies.put('authenticatedAccount', JSON.stringify(account));
     }
 
     /**

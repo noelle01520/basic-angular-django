@@ -37,8 +37,8 @@
         }
       });
 
-      if(!vm.message && $cookies.appMessage){
-        var appMessage = JSON.parse($cookies.appMessage)
+      if(!vm.message && $cookies.get('appMessage')){
+        var appMessage = JSON.parse($cookies.get('appMessage'))
         vm.message = appMessage.message;
         vm.type = appMessage.type;
       }

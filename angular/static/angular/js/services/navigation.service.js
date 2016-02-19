@@ -22,12 +22,12 @@
     //////////////////
 
     function display(url,  reload, keepAlert){
-      delete $cookies.appMessage;
+      delete $cookies.remove('appMessage');
       if (keepAlert) {
         url = url + "?alert";
       }
       if (reload){
-        $cookies.appMessage = JSON.stringify(Alert);
+        $cookies.put('appMessage', JSON.stringify(Alert));
         window.location = url;
       } else {
         $location.path(url);

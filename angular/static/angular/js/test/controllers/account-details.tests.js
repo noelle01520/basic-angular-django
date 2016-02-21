@@ -56,6 +56,11 @@ describe('AccountDetailsController', function(){
       expect(angular.isFunction(AccountDetailsController.get)).toBe(true);
     });
 
+    it('should call get on Account', function(){
+      expect(Account.get).toHaveBeenCalled();
+      expect(Account.get.calls.count()).toBe(1);
+    });
+
     it('should retrieve user data on success', function(){
       var data = { data: { 'id': 1,
                    'username': 'testuser',

@@ -100,5 +100,16 @@ describe('AccountUpdateController', function(){
       expect(Account.destroy).toHaveBeenCalled();
       expect(Account.destroy.calls.count()).toBe(1);
     });
+
+    it('should expose a method to update an account', function(){
+      expect(AccountUpdateController.update).toBeDefined();
+      expect(angular.isFunction(AccountUpdateController.update)).toBe(true);
+    });
+
+    it('should call update on account', function(){
+      AccountUpdateController.update();
+      expect(Account.update).toHaveBeenCalled();
+      expect(Account.update.calls.count()).toBe(1);
+    });
   });
 });

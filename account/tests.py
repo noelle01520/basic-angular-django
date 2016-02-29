@@ -66,7 +66,6 @@ class AccountAPITest(APITestCase):
         """
         Ensure we correctly retrieve account data
         """
-        url = '/account/api/v1/accounts/'
         data = {'username': 'api1', 'first_name': 'Api1', 'last_name': 'Test'}
         response= self.client.get('/account/api/v1/accounts/api1/')
         for key in data:

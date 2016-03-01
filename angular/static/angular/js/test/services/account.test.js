@@ -14,7 +14,7 @@ describe('Service: Account', function(){
   var handler;
   var deferred, a_deferred, n_deferred;
 
-  beforeEach(inject(function($httpBackend, _Account_, _Alert_, _Navigation_) {
+  beforeEach(inject(function($httpBackend, _Account_) {
     Account = _Account_;
     httpBackend = $httpBackend;
   }));

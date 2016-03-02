@@ -20,7 +20,8 @@ module.exports = function(config) {
       'angular/static/bower_components/angular-cookies/angular-cookies.js',
       'angular/static/bower_components/angular-route/angular-route.js',
       'angular/static/angular/js/*.js',
-      'angular/static/angular/js/**/*.js'
+      'angular/static/angular/js/**/*.js',
+      'angular/static/templates/**/*.html'
     ],
 
 
@@ -32,13 +33,13 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'angular/static/tempolates/**/*.html': ['ng-html2js'],
+      'angular/static/templates/**/*.html': ['ng-html2js'],
       'angular/static/angular/js/**/!(*.mock|*.spec).js': ['coverage']
     },
 
     ngHtml2JsPreprocessor: {
       // strip this from the file path
-      stripPrefix: 'angular/static/',
+      stripPrefix: 'angular',
       // create a single module that contains templates from all the files
       moduleName: 'templates'
     },

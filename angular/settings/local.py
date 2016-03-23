@@ -3,10 +3,6 @@ from angular.settings.base import *
 
 DEBUG = True
 
-VAR_ROOT = '/var/www/angular'
-MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
-STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
-
 DATABASES = {
     'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.

@@ -1,0 +1,1 @@
+!function(){"use strict";function o(o,t,e,n,c){function l(){}function i(){delete o.appMessage,c.setAlert("",""),n.goHome(!1)}function u(){e.logout()}var r=this;r.index=i,r.logout=u,l()}angular.module("app.controllers").controller("LayoutController",o),o.$inject=["$cookies","$scope","Account","Navigation","Alert"]}();

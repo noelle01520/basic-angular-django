@@ -1,0 +1,1 @@
+!function(){"use strict";function n(n,o,t,a){function e(){t.create(i.email,i.password,i.username,i.first_name,i.last_name)}function c(){t.login(i.email,i.password)}var i=this;i.create=e,i.login=c}angular.module("app.controllers").controller("AccountController",n),n.$inject=["$location","$scope","Account","Navigation"]}();

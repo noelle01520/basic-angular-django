@@ -1,0 +1,1 @@
+!function(){"use strict";function e(e,t,a){function i(i,n,o){delete e.appMessage,o&&(i+="?alert"),n?(e.appMessage=JSON.stringify(a),window.location=i):t.path(i)}function n(e,t){i("/",e,t)}var o={display:i,goHome:n};return o}angular.module("app.services").factory("Navigation",e),e.$inject=["$cookies","$location","Alert"]}();

@@ -1,0 +1,1 @@
+!function(){function n(n){n.html5Mode(!0)}angular.module("app.config").config(n),n.$inject=["$locationProvider"]}();

@@ -1,0 +1,1 @@
+"use strict";describe("AccountController",function(){var c,o;beforeEach(angular.mock.module("app")),beforeEach(angular.mock.inject(function(e,n,r){o=r,c=e.$new(),n("AccountController",{$scope:c})}))});

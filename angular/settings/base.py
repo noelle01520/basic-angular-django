@@ -42,7 +42,7 @@ if not os.path.exists(VAR_ROOT):
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#!r7w37b^y_@_om4rg-19ka84o^=9f2(@nuv31c&5mj%9hluko'
+SECRET_KEY = 'jadew0lfI3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

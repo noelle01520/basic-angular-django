@@ -4,7 +4,7 @@ from angular.settings.base import *
 DEBUG = True
 
 #VAR_ROOT = '/var/www/angular'
-VAR_ROOT = 'var/www/angular'
+VAR_ROOT = 'var'
 MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
 STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
 

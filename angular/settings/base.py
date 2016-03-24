@@ -20,15 +20,14 @@ print(BASE_DIR)
 
 #PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-DIR_ARRAY = os.path.split(BASE_DIR)
-PROJECT_DIR = DIR_ARRAY[0]
+#DIR_ARRAY = os.path.split(BASE_DIR)
+#PROJECT_DIR = DIR_ARRAY[0]
 print(PROJECT_DIR)
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 print(PROJECT_DIR)
 PYTHON_BIN = os.path.dirname(sys.executable)
 ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
-print(ve_path)
 # Assume that the presence of 'activate_this.py' in the python bin/
 # directory means that we're running in a virtual environment.
 if os.path.exists(os.path.join(PYTHON_BIN, 'activate_this.py')):

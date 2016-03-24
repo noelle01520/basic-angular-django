@@ -5,7 +5,8 @@ DEBUG = True
 
 VAR_ROOT = 'var/www/angular'
 MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
-STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
+#STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DATABASES = {
     'default': {

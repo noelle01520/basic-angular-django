@@ -1,7 +1,6 @@
-{% load compress %}
+
 {% load staticfiles %}
 
-{% compress js %}
 <script type="text/javascript" src="{% static 'bower_components/jquery/dist/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/bootstrap/dist/js/bootstrap.js' %}"></script>
 <script type="text/javascript" src="{% static 'bower_components/underscore/underscore.js' %}"></script>
@@ -24,4 +23,3 @@
 <script type="text/javascript" src="{% static 'angular/js/controllers/account-details.controller.js' %}"></script>
 <script type="text/javascript" src="{% static 'angular/js/controllers/account-update.controller.js' %}"></script>
 <script type="text/javascript" src="{% static 'angular/js/directives/alert.directive.js' %}"></script>
-{% endcompress %}

@@ -17,7 +17,7 @@ from django.conf.urls import url, include, patterns
 from django.contrib import admin
 
 from .views import IndexView
-from angular import settings
+from angular.settings import base
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,7 +29,7 @@ urlpatterns = [
 urlpatterns += patterns(
                         (
                             r'^static/(?P<path>.*)$', 'django.views.static.serve',
-                            {'document_root': settings.STATIC_ROOT}),
+                            {'document_root': base.STATIC_ROOT}),
 )
 
 print(urlpatterns)

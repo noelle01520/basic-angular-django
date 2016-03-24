@@ -17,12 +17,17 @@ import angular as project_module
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-#PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-DIR_ARRAY = os.path.split(BASE_DIR)
-PROJECT_DIR = DIR_ARRAY[0]
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+PROJECT_ROOT = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 PYTHON_BIN = os.path.dirname(sys.executable)
 ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
 # Assume that the presence of 'activate_this.py' in the python bin/
@@ -37,7 +42,7 @@ elif ve_path and os.path.exists(os.path.join(ve_path, 'bin',
 else:
     # Set the variable root to a path in the project which is
     # ignored by the repository.
-    VAR_ROOT = os.path.join(PROJECT_DIR, 'var')
+    VAR_ROOT = os.path.join(BASE_DIR, 'var')
 
 if not os.path.exists(VAR_ROOT):
     os.mkdir(VAR_ROOT)
@@ -86,8 +91,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
-            os.path.join(PROJECT_DIR, 'static/templates/')
+            os.path.join(STATIC_ROOT, 'templates'),
+            os.path.join(STATIC_ROOT, 'static/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {

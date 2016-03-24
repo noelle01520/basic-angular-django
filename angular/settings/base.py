@@ -29,6 +29,7 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 print(STATICFILES_DIRS)
+print(os.path.exists(os.path.join(PROJECT_ROOT, 'static')))
 PYTHON_BIN = os.path.dirname(sys.executable)
 ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
 # Assume that the presence of 'activate_this.py' in the python bin/

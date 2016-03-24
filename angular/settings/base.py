@@ -16,16 +16,13 @@ import angular as project_module
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
 
 #PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-#DIR_ARRAY = os.path.split(BASE_DIR)
-#PROJECT_DIR = DIR_ARRAY[0]
-print(PROJECT_DIR)
+DIR_ARRAY = os.path.split(BASE_DIR)
+PROJECT_DIR = DIR_ARRAY[0]
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
-print(PROJECT_DIR)
 PYTHON_BIN = os.path.dirname(sys.executable)
 ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
 # Assume that the presence of 'activate_this.py' in the python bin/

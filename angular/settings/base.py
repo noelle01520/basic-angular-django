@@ -23,7 +23,7 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 DIR_ARRAY = os.path.split(BASE_DIR)
 PROJECT_DIR = DIR_ARRAY[0]
 print(PROJECT_DIR)
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATIC_URL = '/static/'
 print(PROJECT_DIR)
 PYTHON_BIN = os.path.dirname(sys.executable)
@@ -91,7 +91,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(PROJECT_DIR, 'templates'),
-            os.path.join(PROJECT_DIR, 'staticfiles/templates/')
+            os.path.join(PROJECT_DIR, 'static/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {

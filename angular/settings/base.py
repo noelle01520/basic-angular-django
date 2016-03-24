@@ -85,7 +85,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(PROJECT_DIR, 'templates'),
-            os.path.join(PROJECT_DIR, 'static/templates/')
+            os.path.join(PROJECT_DIR, 'staticfiles/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -152,14 +152,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/uploads/'
 
-STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
+STATIC_ROOT = os.path.join(VAR_ROOT, 'staticfiles')
 MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_DIR, 'static'),
+    #os.path.join(PROJECT_DIR, 'staticfiles'),
     #os.path.join(ve_path, 'django1.9', 'basic-angular-django')
 )
-print(STATICFILES_DIRS)
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',

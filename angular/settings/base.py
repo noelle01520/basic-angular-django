@@ -15,18 +15,20 @@ import sys
 import angular as project_module
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Absolute filesystem path to the Django project directory:
+DJANGO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 PROJECT_ROOT = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 print(STATICFILES_DIRS)
 print(os.path.exists(os.path.join(PROJECT_ROOT, 'static')))

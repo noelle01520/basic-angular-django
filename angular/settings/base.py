@@ -18,10 +18,16 @@ import angular as project_module
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print(BASE_DIR)
 
-PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
+#PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+DIR_ARRAY = os.path.split(BASE_DIR)
+PROJECT_DIR = DIR_ARRAY[0]
+print(PROJECT_DIR)
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 print(PROJECT_DIR)
 PYTHON_BIN = os.path.dirname(sys.executable)
-ve_path = os.path.dirname(os.path.dirname(os.path.dirname(PROJECT_DIR)))
+ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
 print(ve_path)
 # Assume that the presence of 'activate_this.py' in the python bin/
 # directory means that we're running in a virtual environment.
@@ -149,7 +155,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/uploads/'
 
 STATIC_ROOT = os.path.join(VAR_ROOT, 'staticfiles')

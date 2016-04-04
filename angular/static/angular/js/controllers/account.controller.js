@@ -3,6 +3,7 @@
 * @namespace app.controllers
 * @desc Provides create, update, login, logout for Account
 **/
+(function(){
   'use strict';
   angular
     .module('app.controllers')
@@ -34,3 +35,4 @@
       Account.login(vm.email, vm.password);
     }
   }
+})();

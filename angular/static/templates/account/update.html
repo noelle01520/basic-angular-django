@@ -1,6 +1,7 @@
 <div class="col-md-4 col-md-offset-4">
   <div class="well" ng-show="vm.account">
     <form role="form" class="update" ng-submit="vm.update()">
+      <input type="hidden" name="update_username" ng-model="vm.account.username" />
       <div class="form-group">
         <label for="update__email">Email</label>
         <input type="email" class="form-control" id="update__email" ng-model="vm.account.email" />
@@ -17,8 +18,8 @@
       </div>
 
       <div class="form-group">
-        <label for="update__username">Username</label>
-        <input type="text" class="form-control" id="update__username" ng-model="vm.account.username" />
+        <label for="update__new_username">Username</label>
+        <input type="text" class="form-control" id="update__new_username" ng-model="vm.account.new_username" />
       </div>
 
       <div class="form-group">

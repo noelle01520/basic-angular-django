@@ -1,9 +1,9 @@
 """Settings for Staging Server"""
 from angular.settings.base import *
 
-VAR_ROOT = '/var/www/angular'
-MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
-STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
+#VAR_ROOT = 'var/www/angular'
+#MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
+#STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
 
 DATABASES = {
     'default': {

@@ -3,6 +3,7 @@
 * @namespace app.services
 * @desc Provide objects for interacting with django Account api
 **/
+(function(){
   'use strict';
 
   angular
@@ -186,6 +187,7 @@
     * @memeberOf app.services.Account
     **/
     function setAuthenticatedAccount(account){
+      account.new_username = account.username;
       $cookies.put('authenticatedAccount', JSON.stringify(account));
     }
 
@@ -209,3 +211,4 @@
       return $http.put('/account/api/v1/accounts/' + account.username + '/', account);
     }
   }
+})();

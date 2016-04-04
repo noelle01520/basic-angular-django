@@ -2,6 +2,7 @@
 * AccountUpdateController
 * @namespace app.controllers
 **/
+(function(){
   'use strict';
 
   angular
@@ -54,6 +55,7 @@
       **/
       function accountSuccessFn(data, status, headers, config){
         vm.account = data.data;
+        vm.account.new_username = vm.account.username;
       }
 
       /**
@@ -105,7 +107,10 @@
       * @desc Display success message
       **/
       function accountSuccessFn(data, status, headers, config){
+        Account.setAuthenticatedAccount(data.data);
         Alert.setAlert('Account successfully updated.', 'success');
+        // in case username was updated
+        Navigation.display('/account/+' + data.data.username + '/update',  true, true);
       }
 
       /**
@@ -124,3 +129,4 @@
       }
     }
   }
+})();

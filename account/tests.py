@@ -73,31 +73,82 @@ class AccountAPITest(APITestCase):
                 self.assertEqual(response.data[key], data[key])
 
 
-    def test_api_update_account(self):
-        """
-        Ensure we correctly update account data
-        """
-        user = Account.objects.get(email='api1@test.com')
-        url = '/account/api/v1/accounts/api1/'
-        self.client.login(email='api1@test.com', password='api1')
-        data = AccountSerializer(user).data
-        data.update({'first_name': 'Api2'})
-        response = self.client.put(url, data)
-        user2 = Account.objects.get(email='api1@test.com')
-        self.assertEqual(user2.get_full_name(), 'Api2 Test')
 
+class UpdateAccountTest(APITestCase):
+    def setUp(self):
+        """
+        Setup test data with regular user account and
+        change first name
+        """
+        self.user = Account.objects.create_user(email='api2@test.com', password='api2',
+                                                first_name='Api2', last_name='Test', username='api2')
+        self.client.login(email='api2@test.com', password='api2')
+        self.data = AccountSerializer(self.user).data
+        self.data.update({'first_name': 'Changed',
+                          'last_name': 'Changed2',
+                          'new_username': 'Changed3'})
 
-    def test_api_login_logout_account(self):
+    def test_can_update_user(self):
         """
-        Ensure we correctly login and the user
+        Use API to update changes in db
+        Ensure changes correctly populated to db
         """
-        url = reverse('login')
-        data = { 'email': 'api1@test.com',
-                 'password': 'api1'}
-        response = self.client.post(url, data, format='json')
+        response = self.client.put(reverse('account-detail', args=[self.user.username]), self.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['username'], 'api1')
-        url = reverse('logout')
-        response = self.client.post(url)
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.user = Account.objects.get(email=self.user.email)
+        self.assertEqual(self.user.get_full_name(), 'Changed Changed2')
+        self.assertEqual(self.user.username, 'Changed3')
 
+    def test_password_update(self):
+        """
+        Ensure update passes when passwords the same and
+        fails when they don't match
+        """
+        # matching password
+        self.data.update({'password': 'api2changed',
+                          'confirm_password': 'api2changed'})
+        response = self.client.put(reverse('account-detail', args=[self.user.username]), self.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.user = Account.objects.get(email=self.user.email)
+        # make sure user can login with new password
+        response = self.client.login(email='api2@test.com', password='api2changed')
+        self.assertTrue(response)
+        # password missing
+        self.data.update({'password': '',
+                          'confirm_password': 'api2changed2'})
+        response = self.client.put(reverse('account-detail', args=[self.user.username]), self.data)
+        # make sure pw wasn't changed
+        response = self.client.login(email='api2@test.com', password='api2changed2')
+        self.assertFalse(response)
+        # confirm_password missing
+        self.data.update({'password': 'api2changed2',
+                          'confirm_password': ''})
+        response = self.client.put(reverse('account-detail', args=[self.user.username]), self.data)
+        # make sure pw wasn't changed
+        response = self.client.login(email='api2@test.com', password='api2changed2')
+        self.assertFalse(response)
+        # mismatched passwords
+        self.data.update({'password': 'api2',
+                          'confirm_password': 'api2changed2'})
+        response = self.client.put(reverse('account-detail', args=[self.user.username]), self.data)
+        # make sure pw wasn't changed
+        response = self.client.login(email='api2@test.com', password='api2')
+        self.assertFalse(response)
+        response = self.client.login(email='api2@test.com', password='api2changed')
+        self.assertTrue(response)
+
+
+
+# Integration tests
+class SiteTest(TestCase):
+
+    def setUp(self):
+        Account.objects.create_user(email='api1@test.com', password='api1',
+                                    first_name='Api1', last_name='Test', username='api1')
+
+    def test_homepage(self):
+        """
+        Ensure the homepage loads correctly
+        """
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)

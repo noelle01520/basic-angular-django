@@ -24,7 +24,6 @@ class AccountViewSet(viewsets.ModelViewSet):
             return (permissions.AllowAny(),)
 
         if self.request.method == 'POST':
-            print('allowed')
             return (permissions.AllowAny(),)
 
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
@@ -40,7 +39,6 @@ class AccountViewSet(viewsets.ModelViewSet):
             'status': 'Bad Request',
             'message': 'Account could not be created with received data.'
         }, status=status.HTTP_400_BAD_REQUEST)
-
 
 
 class IndexView(TemplateView):

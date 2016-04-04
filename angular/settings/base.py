@@ -15,25 +15,12 @@ import sys
 import angular as project_module
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# Absolute filesystem path to the Django project directory:
-DJANGO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_ROOT = os.path.split(os.path.dirname(os.path.abspath(__file__)))[0]
+PROJECT_DIR = os.path.dirname(os.path.realpath(project_module.__file__))
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-print(STATICFILES_DIRS)
-print(os.path.exists(os.path.join(PROJECT_ROOT, 'static')))
 PYTHON_BIN = os.path.dirname(sys.executable)
-ve_path = os.path.dirname(os.path.dirname(os.path.dirname(BASE_DIR)))
+ve_path = os.path.dirname(os.path.dirname(os.path.dirname(PROJECT_DIR)))
 # Assume that the presence of 'activate_this.py' in the python bin/
 # directory means that we're running in a virtual environment.
 if os.path.exists(os.path.join(PYTHON_BIN, 'activate_this.py')):
@@ -46,7 +33,7 @@ elif ve_path and os.path.exists(os.path.join(ve_path, 'bin',
 else:
     # Set the variable root to a path in the project which is
     # ignored by the repository.
-    VAR_ROOT = os.path.join(BASE_DIR, 'var')
+    VAR_ROOT = os.path.join(PROJECT_DIR, 'var')
 
 if not os.path.exists(VAR_ROOT):
     os.mkdir(VAR_ROOT)
@@ -95,8 +82,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(STATIC_ROOT, 'templates'),
-            os.path.join(STATIC_ROOT, 'static/templates/')
+            os.path.join(PROJECT_DIR, 'templates'),
+            os.path.join(PROJECT_DIR, 'static/templates/')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -163,12 +150,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/uploads/'
 
-#STATIC_ROOT = os.path.join(VAR_ROOT, 'staticfiles')
+STATIC_ROOT = os.path.join(VAR_ROOT, 'static')
 MEDIA_ROOT = os.path.join(VAR_ROOT, 'uploads')
 
 STATICFILES_DIRS = (
-    #os.path.join(PROJECT_DIR, 'staticfiles'),
-    #os.path.join(ve_path, 'django1.9', 'basic-angular-django')
+    os.path.join(PROJECT_DIR, 'static'),
+    os.path.join(ve_path, 'django1.9', 'basic-django-angular')
 )
 
 STATICFILES_FINDERS = (

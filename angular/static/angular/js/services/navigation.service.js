@@ -2,6 +2,7 @@
 * Navigation
 * @namespace app.services
 **/
+(function(){
   'use strict';
 
   angular
@@ -39,3 +40,4 @@
     }
 
   }
+})();

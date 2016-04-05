@@ -9,9 +9,9 @@
     .module('app.controllers')
     .controller('AccountController', AccountController);
 
-  AccountController.$inject = ['$location', '$scope', 'Account', 'Navigation'];
+  AccountController.$inject = ['$location', '$scope', 'Account', 'Navigation', 'Alert'];
 
-  function AccountController($location, $scope, Account, Navigation){
+  function AccountController($location, $scope, Account, Navigation, Alert){
     var vm = this;
 
     vm.create = create;
@@ -23,7 +23,28 @@
     * @memberOf app.controllers.AccountController
     **/
     function create(){
-      Account.create(vm.email, vm.password, vm.username, vm.first_name, vm.last_name);
+      Account.create(vm.email, vm.password, vm.confirm_password, vm.username, vm.first_name, vm.last_name)
+        .then(createSuccessFn, createErrorFn);
+
+      /**
+      * @name createSuccessFn
+      * @desc Log in user after account created
+      **/
+      function createSuccessFn(data, status, headers, config){
+        Account.login(vm.email, vm.password);
+      }
+
+      /**
+      * @name createErrorFn
+      * @desc Display error
+      **/
+      function createErrorFn(data, status, headers, config){
+        var messages = '';
+        for (var error in data.data){
+          messages = messages + data.data[error] + '\n';
+        }
+        Alert.setAlert(messages, 'danger');
+      }
     }
 
     /**

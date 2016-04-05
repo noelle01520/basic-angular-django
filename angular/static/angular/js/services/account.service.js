@@ -46,30 +46,15 @@
     * @returns {Promise}
     * @memberOf app.services.Account
     **/
-    function create(email, password, username, first_name, last_name){
+    function create(email, password, confirm_password, username, first_name, last_name){
       return $http.post('/account/api/v1/accounts/', {
         username: username,
         password: password,
+        confirm_password: confirm_password,
         email: email,
         first_name: first_name,
         last_name: last_name
-      }).then(createSuccessFn, createErrorFn);
-
-      /**
-      * @name createSuccessFn
-      * @desc Log in user after account created
-      **/
-      function createSuccessFn(data, status, headers, config){
-        Account.login(email, password);
-      }
-
-      /**
-      * @name createErrorFn
-      * @desc Display error
-      **/
-      function createErrorFn(data, status, headers, config){
-        Alert.setMessage(data.data.details, 'danger');
-      }
+      });
     }
 
     /**

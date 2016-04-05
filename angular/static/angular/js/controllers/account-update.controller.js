@@ -118,14 +118,11 @@
       * @desc Display error message
       **/
       function accountErrorFn(data, status, headers, config){
-        var messages = [];
-        var fields = data.config.data;
-        for (var field in fields){
-          if (data.data[field]){
-            messages.push(field.charAt(0).toUpperCase() + field.slice(1) + ': ' + data.data[field]+ '<br />');
-          }
+        var messages = '';
+        for (var error in data.data){
+          messages = messages + data.data[error] + '\n';
         }
-        Alert.setAlert($sce.trustAsHtml(messages), 'danger');
+        Alert.setAlert(messages, 'danger');
       }
     }
   }

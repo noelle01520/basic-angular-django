@@ -19,7 +19,10 @@ class AccountSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_at', 'updated_at')
 
     def create(self, validated_data):
-        return Account.objects.create(**validated_data)
+        password = validated_data.get('password', None)
+        confirm_password = validated_data.get('confirm_password', None)
+        self.password_validation(password, confirm_password)
+        return Account.objects.create_user(**validated_data)
 
     def update(self, instance, validated_data):
         instance.username = validated_data.get('new_username', instance.username)
@@ -31,7 +34,8 @@ class AccountSerializer(serializers.ModelSerializer):
         password = validated_data.get('password', None)
         confirm_password = validated_data.get('confirm_password', None)
 
-        if password and confirm_password and password == confirm_password:
+        if password or confirm_password:
+            self.password_validation(password, confirm_password)
             instance.set_password(password)
             instance.save()
 
@@ -39,3 +43,9 @@ class AccountSerializer(serializers.ModelSerializer):
         update_session_auth_hash(self.context.get('request'), instance)
 
         return instance
+
+    def password_validation(self, password, confirm_password):
+        if not password or \
+            not confirm_password or \
+            password != confirm_password:
+            raise serializers.ValidationError('Password and Confirm Password must match.')
